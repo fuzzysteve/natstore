@@ -71,8 +71,8 @@ COMMIT
 -A NewConnection -d 74.117.176.246/32 -j MetaQuotesRateLimit
 -A NewConnection -d 204.8.240.124/32 -j FXCMRateLimit
 -A NewConnection -m set --match-set hotforex dst -j MetaQuotesRateLimit
--I NewConnection 11 -m set --match-set igcom dst -j MetaQuotesRateLimit
--I NewConnection 11 -m set --match-set darwinex dst -j MetaQuotesRateLimit
+-A NewConnection -m set --match-set igcom dst -j MetaQuotesRateLimit
+-A NewConnection -m set --match-set darwinex dst -j MetaQuotesRateLimit
 -A NewConnection -j ACCEPT
 COMMIT
 # Completed on Thu Jan 17 09:53:26 2019
