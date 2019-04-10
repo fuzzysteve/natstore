@@ -52,6 +52,12 @@ COMMIT
 -A MetaQuotesRateLimit -d 104.41.44.127/32 -m recent --set --name metaquotes9 --mask 255.255.255.255 --rsource -j ACCEPT
 -A MetaQuotesRateLimit -d 188.132.225.66/32 -m recent --set --name metaquotes10 --mask 255.255.255.255 --rsource -j ACCEPT
 -A MetaQuotesRateLimit -d 74.117.176.246/32 -m recent --set --name metaquotes11 --mask 255.255.255.255 --rsource -j ACCEPT
+-A MetaQuotesRateLimit -m set --match-set hotforex dst -m recent --rcheck --seconds 1 --hitcount 10 --name hotforex --rsource -j DROPandLOG
+-A MetaQuotesRateLimit -m set --match-set hotforex dst -m recent --set --name hotforex --rsource -j ACCEPT
+-A MetaQuotesRateLimit -m set --match-set igcom dst -m recent --rcheck --seconds 1 --hitcount 5 --name igcom --rsource -j DROPandLOG
+-A MetaQuotesRateLimit -m set --match-set igcom dst -m recent --set --name igcom --rsource -j ACCEPT
+-A MetaQuotesRateLimit -m set --match-set darwinex dst -m recent --rcheck --seconds 1 --hitcount 5 --name darwinex --rsource -j DROPandLOG
+-A MetaQuotesRateLimit -m set --match-set darwinex dst -m recent --set --name darwinex --rsource -j ACCEPT
 -A NewConnection -d 78.140.180.43/32 -j MetaQuotesRateLimit
 -A NewConnection -d 78.140.180.100/32 -j MetaQuotesRateLimit
 -A NewConnection -d 223.25.233.126/32 -j MetaQuotesRateLimit
@@ -64,6 +70,9 @@ COMMIT
 -A NewConnection -d 188.132.225.66/32 -j MetaQuotesRateLimit
 -A NewConnection -d 74.117.176.246/32 -j MetaQuotesRateLimit
 -A NewConnection -d 204.8.240.124/32 -j FXCMRateLimit
+-A NewConnection -m set --match-set hotforex dst -j MetaQuotesRateLimit
+-I NewConnection 11 -m set --match-set igcom dst -j MetaQuotesRateLimit
+-I NewConnection 11 -m set --match-set darwinex dst -j MetaQuotesRateLimit
 -A NewConnection -j ACCEPT
 COMMIT
 # Completed on Thu Jan 17 09:53:26 2019
