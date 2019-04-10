@@ -60,3 +60,5 @@ ipset add hotforex 47.90.103.175
 ipset create darwinex hash:ip
 ipset add darwinex 185.97.161.58
 ipset add darwinex 185.97.161.59
+
+service ipset save
