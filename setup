@@ -1,0 +1,2 @@
+cat /root/natstore/iptables > /etc/sysconfig/iptables
+bash /root/natstore/ipset
