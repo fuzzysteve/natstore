@@ -62,3 +62,4 @@ ipset add darwinex 185.97.161.58
 ipset add darwinex 185.97.161.59
 
 service ipset save
+echo "IPSET_SAVE_ON_STOP=\"yes\"" /etc/sysconfig/ipset-config
