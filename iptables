@@ -22,9 +22,9 @@ COMMIT
 -A INPUT -p icmp -m limit --limit 10/sec -j ACCEPT
 -A INPUT -i mgmt0 -p tcp -m multiport --dports 22,11122 -j ACCEPT
 -A INPUT -j DROP
--A FORWARD -i public0 -o internal0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i external0 -o internal0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -m state --state NEW -j NewConnection
--A FORWARD -i internal0 -o public0 -j ACCEPT
+-A FORWARD -i internal0 -o external0 -j ACCEPT
 -A DROPandLOG -m limit --limit 1/sec -j LOG --log-prefix "MetaQuotesRateLimit: "
 -A DROPandLOG -j DROP
 -A FXCMRateLimit -d 204.8.240.124/32 -m limit --limit 3/hour -m limit --limit 10/sec -j ACCEPT
